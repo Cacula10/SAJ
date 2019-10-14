@@ -6,9 +6,6 @@ conn = pyodbc.connect(
     "Database=SPJHML;"
     "uid=saj;pwd=nltrecRephlcrA"
 )
-
-# Continuar o Software a partir daqui --- vamos lá
-
 cursor = conn.cursor()
 proc = str( input( 'Informe o numero do processo: ' ) )
 proc = '%' + proc + '%'
