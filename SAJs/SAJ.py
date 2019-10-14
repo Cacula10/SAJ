@@ -7,7 +7,7 @@ conn = pyodbc.connect(
     "uid=saj;pwd=nltrecRephlcrA"
 )
 
-# Continuar o Software a partir daqui
+# Continuar o Software a partir daqui --- vamos lá
 
 cursor = conn.cursor()
 proc = str( input( 'Informe o numero do processo: ' ) )
