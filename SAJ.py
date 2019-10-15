@@ -1,47 +1,37 @@
 import pyodbc
-
 # Repositório de variáveis
 lista=[]
-#
+lista2=[]
+# conexão a base de dados
 conn = pyodbc.connect(
     "Driver={SQL Server Native Client 11.0};"
     "Server=10.100.188.129\ISAJ01;"
     "Database=SPJHML;"
     "uid=saj;pwd=nltrecRephlcrA"
 )
-# Criação dos dois cursores para busca de Outros Numeros e Não formatado
-cursor_out = conn.cursor()
-cursor_nformat = conn.cursor()
-
-# Guardando as variaveis
-outnum = str(input('Digite um numero para busca: '))
-
-
-#Concatenando com % para utilizar o like
-outnum = '%' + outnum + '%'
-#nformat = '%' + nformat + '%'
+# Criação do cursor para busca do processo
+cursor = conn.cursor()
+cursor2 = conn.cursor()
+# Guardando as variaveis e concatenando para uso do like no banco
+proc = str(input('Digite um numero para busca: '))
+proc = '%' + proc + '%'
 
 # Select do Banco
-cursor_out.execute(" SELECT A.NUNAOFORMATADO, A.CDUSUINCLUSAO, B.CDPROCESSO, B.NUPROCESSO FROM SAJ.ESPJPROCOUTROSNUM AS A JOIN SAJ.ESPJPROCESSO AS B ON A.CDPROCESSO = B.CDPROCESSO WHERE A.NUNAOFORMATADO LIKE ?",outnum)
-
-# Append na lista
-for row in cursor_out:
+cursor.execute("SELECT A.NUNAOFORMATADO, A.CDUSUINCLUSAO, B.CDPROCESSO, B.NUPROCESSO FROM SAJ.ESPJPROCOUTROSNUM AS A JOIN SAJ.ESPJPROCESSO AS B ON A.CDPROCESSO = B.CDPROCESSO WHERE A.NUNAOFORMATADO LIKE ?",proc)
+for row in cursor:
     lista.append(row)
+cursor2.execute("SELECT * FROM ESPJPROCESSO WHERE NUNAOFORMATADO LIKE ?",proc)
+for row in cursor2:
+    lista2.append(row)
 
-# exibindo os processos encontrados
-if len(lista) > 20:
-    continuar= str(input('O sistema encontrou mais que 20 processos com esse número você deseja exibi-los ? '))[0].upper()
-    if continuar == 'S':
-        print(lista)
-        print()
-
-continuar= str(input('Deseja continuar procurando ?'))
-
-if continuar == 'N':
-    print('FIM')
+print()
+print("Segue abaixo os processos encontrados")
+print()
+print(lista)
+continua = str(input("Deseja continuar? [S/N]"))[0].upper()
+if continua == 'S':
+    print("Segue abaixo o restante dos processos")
+    print()
+    print(lista2)
 else:
-    nformat = str(input('Digite um numero para uma nova busca'))
-
-
-
-print('FIM')
+    print("FIM")
