@@ -1,4 +1,5 @@
 import pyodbc
+import time
 # Repositório de variáveis
 outros_num=[]
 nunaoformato=[]
@@ -25,16 +26,20 @@ cursor2.execute("SELECT * FROM ESPJPROCESSO WHERE NUNAOFORMATADO LIKE ?",proc)
 for row in cursor2:
     nunaoformato.append(row)
 
-print()
-print("Segue abaixo os processos encontrados")
-print()
-# Exibição ao usuário
-print(f'Foram encontrado {len(outros_num)} processos')
+print(("=>" * 20).format(""))
+print('{:^35}'.format('PROCURANDO'))
+print(("=>" * 20).format(""))
+time.sleep(2)
+print('\033[31m')
+print(f'ENCONTRADO {len(outros_num)} PROCESSO(S)')
+print('\033[m')
 print()
 print('Cod')
 for row in outros_num:
     print(row[0])
 print()
+
+# 2 Exibição do usuário
 continua = str(input("Deseja continuar? [S/N]"))[0].upper()
 if continua == 'S':
     print("Segue abaixo o restante dos processos")
