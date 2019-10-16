@@ -3,6 +3,11 @@ import time
 # Repositório de variáveis
 outros_num=[]
 nunaoformato=[]
+cores = {'limpa':'\033[m',
+         'azul':'\033[34m',
+         'amarelo':'\033[33m',
+         'preto_branco':'\033[7;33m'}
+
 # conexão a base de dados
 conn = pyodbc.connect(
     "Driver={SQL Server Native Client 11.0};"
@@ -17,6 +22,7 @@ cursor2 = conn.cursor()
 # Guardando as variaveis e concatenando para uso do like no banco
 proc = str(input('Digite um numero para busca: '))
 proc = '%' + proc + '%'
+time.sleep(0.5)
 
 # Select's do Banco
 cursor.execute("SELECT A.NUNAOFORMATADO, A.CDUSUINCLUSAO, B.CDPROCESSO, B.NUPROCESSO FROM SAJ.ESPJPROCOUTROSNUM AS A JOIN SAJ.ESPJPROCESSO AS B ON A.CDPROCESSO = B.CDPROCESSO WHERE A.NUNAOFORMATADO LIKE ?",proc)
@@ -27,14 +33,11 @@ for row in cursor2:
     nunaoformato.append(row)
 
 print(("=>" * 20).format(""))
-print('{:^35}'.format('PROCURANDO'))
+print(f'PROCURANDO'.format(cores['azul']))
 print(("=>" * 20).format(""))
 time.sleep(2)
-print('\033[31m')
-print(f'ENCONTRADO {len(outros_num)} PROCESSO(S)')
-print('\033[m')
+print(f'\033[1;34;43mENCONTRADO {len(outros_num)} PROCESSO(s)\033[m')
 print()
-print('Cod')
 for row in outros_num:
     print(row[0])
 print()
