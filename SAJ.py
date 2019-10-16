@@ -31,17 +31,17 @@ for row in cursor:
 cursor2.execute("SELECT * FROM ESPJPROCESSO WHERE NUNAOFORMATADO LIKE ?",proc)
 for row in cursor2:
     nunaoformato.append(row)
-
+print(format(cores['azul']))
 print(("=>" * 20).format(""))
-print(f'PROCURANDO'.format(cores['azul']))
+print('PROCURANDO')
 print(("=>" * 20).format(""))
+print(format(cores['limpa']))
 time.sleep(2)
-print(f'\033[1;34;43mENCONTRADO {len(outros_num)} PROCESSO(s)\033[m')
+print(f'ENCONTRADO {len(outros_num)} PROCESSO(s)')
 print()
 for row in outros_num:
     print(row[0])
 print()
-
 # 2 Exibição do usuário
 continua = str(input("Deseja continuar? [S/N]"))[0].upper()
 if continua == 'S':
@@ -50,3 +50,4 @@ if continua == 'S':
     print(nunaoformato)
 else:
     print("FIM")
+# Exercício Python #076 - Lista de Preços com Tupla
