@@ -10,7 +10,6 @@ cores = {'limpa':'\033[m',
          'azul':'\033[34m',
          'amarelo':'\033[33m',
          'preto_branco':'\033[7;33m'}
-
 # conexão a base de dados
 conn = pyodbc.connect(
     "Driver={SQL Server Native Client 11.0};"
