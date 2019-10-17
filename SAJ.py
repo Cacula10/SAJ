@@ -34,16 +34,10 @@ time.sleep(0.5)
 # Select's do Banco
 cursor.execute("SELECT CDUSUINCLUSAO, NUNAOFORMATADO, CAST(NUPROCESSO AS VARCHAR) AS PROCESSO FROM ESPJPROCESSO WHERE NUPROCESSO LIKE ? OR NUNAOFORMATADO LIKE ?",proc,proc)
 for row in cursor:
-    outros_num.append(row[0].rstrip())
-    outros_num.append(row[1])
-    outros_num.append(row[2])
+    usuarios.append(row[0].rstrip())
+    n_formatado.append(row[1])
+    processo.append(row[2])
     cont += 1
-for usuario in range(0, 48, 3):
-    usuarios.append(outros_num[usuario])
-for num_formatado in range(1, 48, 3):
-    n_formatado.append(outros_num[num_formatado])
-for proc in range(2, 48, 3):
-    processo.append(outros_num[proc])
 
 print(usuarios)
 print(n_formatado)
