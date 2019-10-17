@@ -5,12 +5,8 @@ import time
 outros_num=[]
 nunaoformato=[]
 cont = 0
-c=0
-x=[]
-dicionario = {}
-usuarios = []
-n_formatado = []
-processo = []
+l_geral = [[], [], []]
+
 
 cores = {'limpa':'\033[m',
          'azul':'\033[34m',
@@ -34,14 +30,11 @@ time.sleep(0.5)
 # Select's do Banco
 cursor.execute("SELECT CDUSUINCLUSAO, NUNAOFORMATADO, CAST(NUPROCESSO AS VARCHAR) AS PROCESSO FROM ESPJPROCESSO WHERE NUPROCESSO LIKE ? OR NUNAOFORMATADO LIKE ?",proc,proc)
 for row in cursor:
-    usuarios.append(row[0].rstrip())
-    n_formatado.append(row[1])
-    processo.append(row[2])
+    l_geral[0].append(row[0].rstrip())
+    l_geral[1].append(row[1])
+    l_geral[2].append(row[2])
     cont += 1
 
-print(usuarios)
-print(n_formatado)
-print(processo)
-
+print(l_geral)
 
 
