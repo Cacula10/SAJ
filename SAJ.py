@@ -1,5 +1,4 @@
 import pyodbc
-
 # Repositório de variáveis
 
 cont = 0
@@ -28,11 +27,6 @@ num = '%' + num + '%'
 cursor.execute("SELECT CDUSUINCLUSAO, NUNAOFORMATADO, CAST(NUPROCESSO AS VARCHAR) AS PROCESSO "
                "FROM ESPJPROCESSO WHERE NUPROCESSO LIKE ? OR NUNAOFORMATADO LIKE ?", num, num)
 
-for row in cursor:
-    l_geral[0].append(row[0].rstrip())
-    l_geral[1].append(row[1])
-    l_geral[2].append(row[2])
-    cont += 1
 
-print(len(l_geral[0]))
-# Utilizar o enumerate para concluir isso
+
+print(sum(cursor))
