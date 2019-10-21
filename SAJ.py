@@ -34,5 +34,8 @@ for row in cursor:
     l_geral[2].append(row[2])
     cont += 1
 
-print(len(l_geral[0]))
-# Utilizar o enumerate para concluir isso
+print(l_geral)
+
+
+
+
