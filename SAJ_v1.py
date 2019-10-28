@@ -46,17 +46,20 @@ while prossiga == 'S':
 
     for usuario, numero, processo in splited:
         dicionario_proc[usuario].append((numero, processo))
-
-    print(dicionario_proc)
+    print(cores['azul'], '>=' * 35)
+    print('SEGUE LISTAGEM')
+    print(cores['azul'], '>=' * 35)
+    for k, v in dicionario_proc.items():
+        print(cores['amarelo'], f'Usuário: {k}     Dados: {v}')
 
     prossiga = str(input('Deseja continuar [S/N]?')).upper()[0]
+
     if prossiga == 'N':
-        print('ESPERO QUE TENHA ENCONTRADO O PROCESSO')
+        print(cores['azul'], 'ESPERO QUE TENHA ENCONTRADO O PROCESSO')
         break
     elif prossiga not in 'SN':
         prossiga = str(input('Favor digitar [S] ou [N]'))
 
-s = input('...')
 
 
 
