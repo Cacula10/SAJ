@@ -25,7 +25,7 @@ num = '%' + num + '%'
 cursor.execute("SELECT A.CDUSUINCLUSAO, A.NUNAOFORMATADO, B.NUNAOFORMATADO,"
                    " CAST(A.NUPROCESSO AS VARCHAR) AS PROCESSO"
                    " FROM ESPJPROCESSO AS A "
-                   "INNER JOIN ESPJPROCOUTROSNUM AS B "
+                   "LEFT JOIN ESPJPROCOUTROSNUM AS B "
                    "ON A.CDPROCESSO = B.CDPROCESSO"
                    " WHERE NUPROCESSO LIKE ? "
                    "OR A.NUNAOFORMATADO LIKE ? "
