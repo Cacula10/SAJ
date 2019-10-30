@@ -1,8 +1,6 @@
 import pyodbc
-from collections import defaultdict
 
 lista_SQL = []
-dicionario_proc = defaultdict(list)
 prossiga = 'S'
 
 cores = {'limpa':'\033[m',
@@ -22,20 +20,16 @@ cursor = conn.cursor()
 num = str(input('Digite um numero para busca: '))
 num = '%' + num + '%'
 
-cursor.execute("SELECT A.CDUSUINCLUSAO, A.NUNAOFORMATADO, B.NUNAOFORMATADO,"
-                   " CAST(A.NUPROCESSO AS VARCHAR) AS PROCESSO"
-                   " FROM ESPJPROCESSO AS A "
-                   "LEFT JOIN ESPJPROCOUTROSNUM AS B "
-                   "ON A.CDPROCESSO = B.CDPROCESSO"
-                   " WHERE NUPROCESSO LIKE ? "
-                   "OR A.NUNAOFORMATADO LIKE ? "
-                   "OR B.NUNAOFORMATADO LIKE ? ", num, num, num)
+cursor.execute("SELECT CAST(A.NUPROCESSO AS VARCHAR), A.NUNAOFORMATADO, B.NUNAOFORMATADO"
+               " FROM ESPJPROCESSO AS A "
+               "LEFT JOIN ESPJPROCOUTROSNUM AS B "
+               "ON A.CDPROCESSO = B.CDPROCESSO "
+               "WHERE A.NUPROCESSO LIKE ? OR A.NUNAOFORMATADO LIKE ? OR B.NUNAOFORMATADO LIKE ? ", num, num, num)
 
 for row in cursor:
-    lista_SQL.append(row[0].rstrip())
+    lista_SQL.append(row[0])
     lista_SQL.append(row[1])
     lista_SQL.append(row[2])
-    lista_SQL.append(row[3])
 
 
 print(cores['azul'], '>=' * 35)
