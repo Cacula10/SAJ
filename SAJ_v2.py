@@ -37,3 +37,4 @@ print('{:^70}'.format('CONFIRA A LISTAGEM'))
 print(cores['azul'], '>=' * 35)
 
 print(lista_SQL)
+#teste
