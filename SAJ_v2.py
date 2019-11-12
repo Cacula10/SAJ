@@ -1,17 +1,11 @@
 import pyodbc
 
 lista_SQL = []
-prossiga = 'S'
-
-cores = {'limpa':'\033[m',
-         'azul':'\033[34m',
-         'amarelo':'\033[33m',
-         'preto_branco':'\033[7;33m'}
 
 conn = pyodbc.connect(
     "Driver={SQL Server Native Client 11.0};"
     "Server=10.100.188.129\ISAJ01;"
-    "Database=SPJHML;"
+    "Database=SPJUSP;"
     "uid=saj;pwd=nltrecRephlcrA"
 )
 
@@ -37,4 +31,6 @@ print('{:^70}'.format('CONFIRA A LISTAGEM'))
 print(cores['azul'], '>=' * 35)
 
 print(lista_SQL)
-#teste
+print(len(lista_SQL))
+
+a = input('...')
