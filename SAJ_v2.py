@@ -26,9 +26,9 @@ for row in cursor:
     lista_SQL.append(row[2])
 
 
-print(cores['azul'], '>=' * 35)
+print('>=' * 35)
 print('{:^70}'.format('CONFIRA A LISTAGEM'))
-print(cores['azul'], '>=' * 35)
+print('>=' * 35)
 
 print(lista_SQL)
 print(len(lista_SQL))
