@@ -1,6 +1,6 @@
 # SAJ
 Localizando Processos no SAJ
 
-.py criado para localizar alguns processos específicos a partir de uma mascára.
+Desenvolvido uma solução pontual e simples para localizar numero de processos dentro do Banco de dados usando Python.
 
-Sistema não localiza nenhum processo se o numero do processo for exatamente igual
+Aplicação não foi desenvolvida para fazer busca de numero de processos ao menos que o numero seja exato, pois isso era um problema e muitas vezes o cliente tinha apenas o numero parcial (mascara).
